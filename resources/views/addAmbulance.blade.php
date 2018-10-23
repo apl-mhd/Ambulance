@@ -25,7 +25,7 @@
         <div class="row no-gutters justify-content-center">
             <div class="col-sm-8 col-xl-6">
 
-                <form class="js-validation-signup" action="{{--{{route('addAmbulanceProcess')}--}}}" method="post">
+                <form class="js-validation-signup" action="{{route('addAmbulanceProcess')}}" method="post">
                     @csrf
                     <div class="py-3">
                         <div class="form-group">
