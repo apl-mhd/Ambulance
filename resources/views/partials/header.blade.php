@@ -1,5 +1,8 @@
 <header id="page-header">
     <!-- Header Content -->
+
+    @if(!empty(Auth::user()->email))
+
     <div class="content-header">
         <!-- Left Section -->
         <div>
@@ -27,9 +30,9 @@
                     <i class="fa fa-fw fa-user d-sm-none"></i>
                     <span class="d-none d-sm-inline-block">
 
-                    @if(!empty(Auth::user()->email))
+
                             Admin{{Auth::user()->email}}
-                     @endif
+
 
                     </span>
                     <i class="fa fa-fw fa-angle-down ml-1 d-none d-sm-inline-block"></i>
@@ -152,6 +155,8 @@
         </div>
         <!-- END Right Section -->
     </div>
+
+    @endif
     <!-- END Header Content -->
 
     <!-- Header Search -->

@@ -61,12 +61,12 @@
                     <td>{{$ambulance->drivernid}}</td>
                     <td>{{$ambulance->ambulancename}}</td>
                     <td>{{$ambulance->type}}</td>
-                    <td>{{$ambulance->acstatus}}</td>
+                    <td>{{($ambulance->acstatus) ==1 ?"AC" :"Non AC"}}</td>
                     <td>{{$ambulance->numberplate}}</td>
                     <td>{{$ambulance->location}}</td>
                     <td>{{$ambulance->hospital}}</td>
                     <td>
-                        <a class="btn btn-info" href="{{route('edit',1)}}">Details</a>
+                        <a class="btn btn-info" href="{{route('edit',1)}}">Update</a>
                     </td>
 
                 </tr>

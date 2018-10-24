@@ -15,7 +15,7 @@ class AddImglinkToAmbulanceInfoTable extends Migration
     {
         Schema::table('ambulance_infos', function (Blueprint $table) {
 
-            $table->string('imglink',64);
+            $table->string('imglink',128);
         });
     }
 
@@ -27,7 +27,8 @@ class AddImglinkToAmbulanceInfoTable extends Migration
     public function down()
     {
         Schema::table('ambulance_infos', function (Blueprint $table) {
-            //
+            $table->dropColumn('imglink');
+
         });
     }
 }

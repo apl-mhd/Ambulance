@@ -25,7 +25,7 @@
         <div class="row no-gutters justify-content-center">
             <div class="col-sm-8 col-xl-6">
 
-                <form class="js-validation-signup" action="{{route('addAmbulanceProcess')}}" method="post">
+                <form class="js-validation-signup" action="{{route('addAmbulanceProcess')}}" method="post" enctype="multipart/form-data" >
                     @csrf
                     <div class="py-3">
                         <div class="form-group">
@@ -95,6 +95,12 @@
                                 <label class="custom-control-label" for="signup-terms">I agree to Terms &amp; Conditions</label>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <input type="file" class="form-control form-control-lg form-control-alt" id="signup-drivername" name="photo">
+                        </div>
+
+
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-block btn-hero-lg btn-hero-success">

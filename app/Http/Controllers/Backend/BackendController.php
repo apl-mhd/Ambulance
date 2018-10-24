@@ -21,8 +21,6 @@ class BackendController extends Controller
 
     public  function  login(){
 
-
-
         if (!Auth::check())
           return view('login');
 
@@ -75,9 +73,22 @@ class BackendController extends Controller
         public  function  addAmbulanceProcess(Request $request){
 
 
+       // return $request;
+
+
+            $photo = $request->file('photo');
+
+            //dd($photo);
+            $fileName = uniqid('photo_',true).str_random(10). '.'. $photo->getClientOriginalExtension();
+
+            $destinationPath = public_path('/uploads');
+            $photo->move($destinationPath, $fileName);
+
+
+            //$photo->storeAs('images',$fileName);
+
 
             $ambulance = new \App\Models\AmbulanceInfo();
-
             $ambulance->email = strtolower($request->input('email'));
             $ambulance->drivername =  $request->input('driverName');
             $ambulance->drivermobile = $request->input('driverPhone');
@@ -91,6 +102,9 @@ class BackendController extends Controller
             $ambulance->location = $request->input('locationName');
             $ambulance->type = $request->input('type');
             $ambulance->acstatus = $request->input('acstatus');
+
+            $ambulance->imglink = $fileName;
+
 
             $ambulance->save();
 
