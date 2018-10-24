@@ -29,7 +29,7 @@
     <!-- Stylesheets -->
     <!-- Fonts and Dashmix framework -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,400i,600,700">
-    <link rel="stylesheet" id="css-main" href="{{asset('assets/css/dashmix.min.css')}}">
+    <link rel="stylesheet" id="css-main" href="assets/css/dashmix.min.css">
 
     <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
     <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/xwork.min.css"> -->
@@ -37,48 +37,67 @@
 </head>
 <body>
 <!-- Page Container -->
+<!--
+    Available classes for #page-container:
 
-<div id="page-container" class="sidebar-o enable-page-overlay side-scroll page-header-fixed page-header-dark main-content-narrow">
-    <!-- Side Overlay-->
+GENERIC
 
-    @include('partials.sidebaruisetings')
+    'enable-cookies'                            Remembers active color theme between pages (when set through color theme helper Template._uiHandleTheme())
 
-    <!-- END Side Overlay -->
+SIDEBAR & SIDE OVERLAY
 
-    <!-- Sidebar -->
+    'sidebar-r'                                 Right Sidebar and left Side Overlay (default is left Sidebar and right Side Overlay)
+    'sidebar-o'                                 Visible Sidebar by default (screen width > 991px)
+    'sidebar-o-xs'                              Visible Sidebar by default (screen width < 992px)
+    'sidebar-dark'                              Dark themed sidebar
+
+    'side-overlay-hover'                        Hoverable Side Overlay (screen width > 991px)
+    'side-overlay-o'                            Visible Side Overlay by default
+
+    'enable-page-overlay'                       Enables a visible clickable Page Overlay (closes Side Overlay on click) when Side Overlay opens
+
+    'side-scroll'                               Enables custom scrolling on Sidebar and Side Overlay instead of native scrolling (screen width > 991px)
+
+HEADER
+
+    ''                                          Static Header if no class is added
+    'page-header-fixed'                         Fixed Header
 
 
-    @include('partials.sidebar')
+Footer
 
+    ''                                          Static Footer if no class is added
+    'page-footer-fixed'                         Fixed Footer (please have in mind that the footer has a specific height when is fixed)
 
+HEADER STYLE
 
-    <!-- END Sidebar -->
+    ''                                          Classic Header style if no class is added
+    'page-header-dark'                          Dark themed Header
+    'page-header-glass'                         Light themed Header with transparency by default
+                                                (absolute position, perfect for light images underneath - solid light background on scroll if the Header is also set as fixed)
+    'page-header-glass page-header-dark'         Dark themed Header with transparency by default
+                                                (absolute position, perfect for dark images underneath - solid dark background on scroll if the Header is also set as fixed)
 
+MAIN CONTENT LAYOUT
 
-
-    <!-- Header -->
-
-    @include('partials.header')
-
-    <!-- END Header -->
+    ''                                          Full width Main Content if no class is added
+    'main-content-boxed'                        Full width Main Content with a specific maximum width (screen width > 1200px)
+    'main-content-narrow'                       Full width Main Content with a percentage width (screen width > 1200px)
+-->
+<div id="page-container">
 
     <!-- Main Container -->
     <main id="main-container">
 
-
-        @yield('content')
-
-
-
-
+        <!-- Page Content -->
         <!-- END Page Content -->
+
+        @yield('logReg')
+
+
 
     </main>
     <!-- END Main Container -->
-
-    <!-- Footer -->
-    @include('partials.footer')
-    <!-- END Footer -->
 </div>
 <!-- END Page Container -->
 
@@ -109,13 +128,9 @@
 <script src="assets/js/dashmix.app.min.js"></script>
 
 <!-- Page JS Plugins -->
-<script src="assets/js/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
-<script src="assets/js/plugins/chart.js/Chart.bundle.min.js"></script>
+<script src="assets/js/plugins/jquery-validation/jquery.validate.min.js"></script>
 
 <!-- Page JS Code -->
-<script src="assets/js/pages/be_pages_dashboard.min.js"></script>
-
-<!-- Page JS Helpers (jQuery Sparkline plugin) -->
-<script>jQuery(function(){ Dashmix.helpers('sparkline'); });</script>
+<script src="assets/js/pages/op_auth_signin.min.js"></script>
 </body>
 </html>

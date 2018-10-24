@@ -1,3 +1,4 @@
+{{--
 @extends('master')
 
 
@@ -90,4 +91,18 @@
     </div>
     <!-- END Page Content -->
 
+@stop--}}
+
+
+
+@extends('masterlogreg')
+
+@section('logReg')
+
+    @include('partials.login')
+
 @stop
+
+
+
+

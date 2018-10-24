@@ -2,7 +2,7 @@
 
 
 @section('navbar')
-    @include('partials.navbar')
+    @include('partials.sidebar')
 @stop
 
 
