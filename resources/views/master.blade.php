@@ -93,7 +93,8 @@ MAIN CONTENT LAYOUT
 
     <!-- Sidebar -->
 
-    @yield('navbar')
+    {{--@yield('navbar')--}}
+    @include('partials.navbar')
 
     <!-- END Sidebar -->
 
