@@ -11,15 +11,15 @@
 
     <div class="container-fluid">
 
-        <div class="alert alert-success">
+
 
             @if(!empty(session('message')))
+            <div class="alert alert-success">
 
                 {{session('message')}}
+            </div>
 
             @endif
-
-        </div>
 
 
         <p>

@@ -4,33 +4,72 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use  Auth;
 
-
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 use  App\Models\AmbulanceInfo;
-
-
 class BackendController extends Controller
 {
 
 
     public  function index(){
-
         $data = [];
         $data['ambulances'] = AmbulanceInfo::paginate(10);
         return view('index',$data);
 
     }
 
-    public  function  addAmbulance(){
+    public  function  login(){
 
 
-        return view('addAmbulance');
+
+        if (!Auth::check())
+          return view('login');
+
+       return  redirect('index');
+    }
+
+
+    public  function  loginProcess(Request $request){
+
+        /* $this->validate($request, [
+            'email'  => 'required|max:255|email',
+            'password'  => 'required',
+        ]);
+*/
+
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // Authentication passed...
+
+            return redirect()->intended('index');
         }
+
+        else
+            redirect()->back();
+
+    }
+
+
+
+    public  function  logout(){
+
+
+
+        Auth::logout();
+
+
+        return view('login');
+    }
+
+
+
+
+    public  function  addAmbulance(){
+        return view('addAmbulance');
+
+    }
 
 
         public  function  addAmbulanceProcess(Request $request){
@@ -95,7 +134,7 @@ class BackendController extends Controller
         $ambulance->save();
 
 
-        session()->flash('messege', $id.' '. 'Successfully Updated');
+        session()->flash('message', 'ID# '. $id.' '. 'Successfully Updated');
 
 
 
