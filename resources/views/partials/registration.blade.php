@@ -18,17 +18,21 @@
                 <!-- For more info and examples you can check out https://github.com/jzaefferer/jquery-validation -->
                 <div class="row no-gutters justify-content-center">
                     <div class="col-sm-8 col-xl-6">
-                        <form class="js-validation-signup" action="be_pages_auth_all.html" method="post">
+
+
+
+                        <form class="js-validation-signup" action="{{route(('registrationProcess'))}}" method="post">
+                            @csrf
                             <div class="py-3">
-                                
+
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-lg form-control-alt" id="signup-email" name="signup-email" placeholder="Email">
+                                    <input type="email" class="form-control form-control-lg form-control-alt" id="email" name="email" placeholder="Email">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg form-control-alt" id="signup-password" name="signup-password" placeholder="Password">
+                                    <input type="password" class="form-control form-control-lg form-control-alt" id="signup-password" name="password" placeholder="Password">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg form-control-alt" id="signup-password-confirm" name="signup-password-confirm" placeholder="Password Confirm">
+                                    <input type="password" class="form-control form-control-lg form-control-alt" id="signup-password-confirm" name="cpassword-confirm" placeholder="Password Confirm">
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox custom-control-primary">
@@ -42,7 +46,7 @@
                                     <i class="fa fa-fw fa-plus mr-1"></i> Sign Up
                                 </button>
                                 <p class="mt-3 mb-0 d-lg-flex justify-content-lg-between">
-                                    <a class="btn btn-sm btn-light d-block d-lg-inline-block mb-1" href="op_auth_signin.html">
+                                    <a class="btn btn-sm btn-light d-block d-lg-inline-block mb-1" href="{{route('login')}}">
                                         <i class="fa fa-sign-in-alt text-muted mr-1"></i> Sign In
                                     </a>
                                     <a class="btn btn-sm btn-light d-block d-lg-inline-block mb-1" href="#" data-toggle="modal" data-target="#modal-terms">

@@ -23,6 +23,16 @@
 
 
                     <div class="col-sm-8 col-xl-6">
+
+                        @if(session()->has('message'))
+
+                            <div class="alert alert-danger">
+                                {{session('message')}}
+                            </div>
+
+                        @endif
+
+
                         <form class="js-validation-signin" action="{{route('loginProcess')}}" method="post">
                             @csrf
                             <div class="py-3">
@@ -41,7 +51,7 @@
                                     <a class="btn btn-sm btn-light d-block d-lg-inline-block mb-1" href="op_auth_reminder.html">
                                         <i class="fa fa-exclamation-triangle text-muted mr-1"></i> Forgot password
                                     </a>
-                                    <a class="btn btn-sm btn-light d-block d-lg-inline-block mb-1" href="op_auth_signup.html">
+                                    <a class="btn btn-sm btn-light d-block d-lg-inline-block mb-1" href="{{route('registration')}}">
                                         <i class="fa fa-plus text-muted mr-1"></i> New Account
                                     </a>
                                 </p>

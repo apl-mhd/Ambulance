@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use  Auth;
@@ -61,10 +62,9 @@ class BackendController extends Controller
     }
 
 
+    /** logout */
 
     public  function  logout(){
-
-
 
         Auth::logout();
 
@@ -73,18 +73,26 @@ class BackendController extends Controller
     }
 
 
-    public  function  registration(){
+    /** Registration */
 
+    public  function  registration(){
 
 
         return view('registration');
 
     }
 
-    public  function  registrationProcess(){
+    public  function  registrationProcess(Request $request){
 
 
+        User::create([
+            'email' => strtolower( trim($request->input('email'))),
+            'password'=> bcrypt($request->input('password')),
 
+        ]);
+        session()->flash('message','Registration success');
+        return  redirect()->intended('login');
+       // return $request;
     }
 
 
@@ -101,6 +109,7 @@ class BackendController extends Controller
 
        // return $request;
 
+            $userId  = Auth::user()->id;
 
             $photo = $request->file('photo');
 
@@ -113,8 +122,9 @@ class BackendController extends Controller
 
             //$photo->storeAs('images',$fileName);
 
-
             $ambulance = new \App\Models\AmbulanceInfo();
+
+            $ambulance->user_id = $userId;
             $ambulance->email = strtolower($request->input('email'));
             $ambulance->drivername =  $request->input('driverName');
             $ambulance->drivermobile = $request->input('driverPhone');

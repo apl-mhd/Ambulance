@@ -21,7 +21,7 @@ Route::get('/', function () {
 Route::get('/login', 'Backend\BackendController@login')->name('login');
 Route::post('/login', 'Backend\BackendController@loginProcess')->name('loginProcess');
 
-Route::get('/registration', 'Backend\BackendController@registration');
+Route::get('/registration', 'Backend\BackendController@registration')->name('registration');
 Route::post('/registration', 'Backend\BackendController@registrationProcess')->name('registrationProcess');
 
 
