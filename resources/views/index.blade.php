@@ -74,11 +74,17 @@
             </tbody>
         </table>
 
-        {{$ambulances->links()}}
+       {{-- {{$ambulances->links()}}--}}
 
     </div>
 
 @stop
+
+
+
+
+
+
 
 
 

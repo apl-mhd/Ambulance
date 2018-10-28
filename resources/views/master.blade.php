@@ -30,6 +30,10 @@
     <!-- Fonts and Dashmix framework -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,400i,600,700">
     <link rel="stylesheet" id="css-main" href="{{asset('assets/css/dashmix.min.css')}}">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+
+
+
 
     <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
     <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/xwork.min.css"> -->
@@ -115,7 +119,23 @@
 <!-- Page JS Code -->
 <script src="assets/js/pages/be_pages_dashboard.min.js"></script>
 
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+
+
 <!-- Page JS Helpers (jQuery Sparkline plugin) -->
 <script>jQuery(function(){ Dashmix.helpers('sparkline'); });</script>
+
+
+
+<script>
+
+    $(document).ready( function () {
+        $('.table').DataTable();
+    } );
+
+</script>
+
+
+
 </body>
 </html>

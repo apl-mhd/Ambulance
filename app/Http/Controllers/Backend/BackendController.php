@@ -14,7 +14,7 @@ class BackendController extends Controller
 
     public  function index(){
         $data = [];
-        $data['ambulances'] = AmbulanceInfo::paginate(10);
+        $data['ambulances'] = AmbulanceInfo::all();
         return view('index',$data);
 
     }
