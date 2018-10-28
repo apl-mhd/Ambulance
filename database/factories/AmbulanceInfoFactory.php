@@ -7,7 +7,7 @@ $factory->define(App\Models\AmbulanceInfo::class,function (Faker $faker) {
 
     return [
         'email' => $faker->unique()->safeEmail,
-        'user_id' =>rand(1,3),
+        'user_id' =>rand(1,5),
         'drivername' => $faker->name,
         'ownername' => $faker->name,
         'drivermobile' =>'017'.rand(0,9).rand(0,9).mt_rand(000000,999999),

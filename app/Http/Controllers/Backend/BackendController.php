@@ -13,14 +13,20 @@ class BackendController extends Controller
 
 
     public  function index(){
-
-
-
-        //$data = [];
         //$data['ambulances'] = AmbulanceInfo::all();
 
-        $data['ambulances'] = AmbulanceInfo::all();
-        return view('index',$data);
+        $data = [];
+
+       $userType =   Auth::user()->user_type;
+       $userId  = Auth::user()->id;
+
+       if ($userType ==1) {
+           $data['ambulances'] = AmbulanceInfo::all();
+           return view('index', $data);
+       }
+
+        $data['ambulances'] = AmbulanceInfo::where('user_id', '=', $userId)->get();
+        return view('index', $data);
 
     }
 

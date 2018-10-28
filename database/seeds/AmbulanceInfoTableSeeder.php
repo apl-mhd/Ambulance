@@ -11,6 +11,6 @@ class AmbulanceInfoTableSeeder extends Seeder
      */
     public function run()
     {
-         factory(App\Models\AmbulanceInfo::class, 2000)->create();
+         factory(App\Models\AmbulanceInfo::class, 1000)->create();
     }
 }
