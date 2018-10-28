@@ -15,8 +15,7 @@ class CreateAmbulanceInfoTable extends Migration
     {
         Schema::create('ambulance_infos', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
-
+            $table->unsignedInteger('user_id');
             $table->string('email',64);
             $table->string('drivername',64);
             $table->string('drivermobile',11);
@@ -29,6 +28,10 @@ class CreateAmbulanceInfoTable extends Migration
             $table->string('hospital',64);
             $table->tinyInteger('acstatus');
             $table->string('numberplate',16);
+            $table->string('imglink',128);
+            $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
+
 
 
         });

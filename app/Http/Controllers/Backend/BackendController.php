@@ -13,7 +13,12 @@ class BackendController extends Controller
 
 
     public  function index(){
-        $data = [];
+
+
+
+        //$data = [];
+        //$data['ambulances'] = AmbulanceInfo::all();
+
         $data['ambulances'] = AmbulanceInfo::all();
         return view('index',$data);
 
