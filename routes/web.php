@@ -21,6 +21,9 @@ Route::get('/', function () {
 Route::get('/login', 'Backend\BackendController@login')->name('login');
 Route::post('/login', 'Backend\BackendController@loginProcess')->name('loginProcess');
 
+Route::get('/registration', 'Backend\BackendController@registration');
+Route::post('/registration', 'Backend\BackendController@registrationProcess')->name('registrationProcess');
+
 
 Route::group(['middleware' =>'auth'], function (){
 Route::get('/', 'Backend\BackendController@index');

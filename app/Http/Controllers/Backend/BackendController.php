@@ -73,6 +73,21 @@ class BackendController extends Controller
     }
 
 
+    public  function  registration(){
+
+
+
+        return view('registration');
+
+    }
+
+    public  function  registrationProcess(){
+
+
+
+    }
+
+
 
 
     public  function  addAmbulance(){

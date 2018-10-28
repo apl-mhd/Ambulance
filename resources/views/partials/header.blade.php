@@ -31,7 +31,7 @@
                     <span class="d-none d-sm-inline-block">
 
 
-                            Admin{{Auth::user()->email}}
+                            Admin {{Auth::user()->email}}
 
 
                     </span>
