@@ -31,6 +31,16 @@ class BackendController extends Controller
 
     }
 
+
+    public  function ambulancelist($id){
+
+
+        return $id;
+
+    }
+
+
+
     /*Login page*/
 
     public  function  login(){
@@ -110,39 +120,43 @@ class BackendController extends Controller
         public  function  addAmbulanceProcess(Request $request){
 
 
+       // return $request;
+
             $userId  = Auth::user()->id;
+
             $photo = $request->file('photo');
 
             //dd($photo);
             $fileName = uniqid('photo_',true).str_random(10). '.'. $photo->getClientOriginalExtension();
-            
 
             $destinationPath = public_path('/uploads');
             $photo->move($destinationPath, $fileName);
-            $photo->storeAs('images',$fileName);
 
-            //$ambulance = new \App\Models\AmbulanceInfo();
+            //$photo->storeAs('images',$fileName);
 
-            AmbulanceInfo::create([
 
-             'user_id' => $userId,
-            'email' => strtolower($request->input('email')),
-            'drivername' =>  $request->input('driverName'),
-            'drivermobile' => $request->input('driverPhone'),
-            'ownername' => $request->input('ownerName'),
-            'drivernid' => $request->input('nid'),
-            'numberplate' => $request->input('numberplate'),
+             AmbulanceInfo::create([
 
-            'ownermobile' => $request->input('ownerPhone'),
-            'ambulancename' => $request->input('ambulanceName'),
-            'hospital' => $request->input('hospitalName'),
-            'location' => $request->input('locationName'),
-            'type' => $request->input('type'),
-            'acstatus' => $request->input('acstatus'),
+                 'user_id' => $userId,
+                 'imglink' => $fileName,
+             'email' => strtolower($request->input('email')),
+             'drivername' =>  $request->input('driverName'),
+             'drivermobile' => $request->input('driverPhone'),
+             'ownername' => $request->input('ownerName'),
+             'drivernid' => $request->input('nid'),
+             'numberplate' => $request->input('numberplate'),
 
-            'imglink' => $fileName,
+             'ownermobile' => $request->input('ownerPhone'),
+             'ambulancename' => $request->input('ambulanceName'),
+             'hospital' => $request->input('hospitalName'),
+             'location' => $request->input('locationName'),
+             'type' => $request->input('type'),
+             'acstatus' => $request->input('acstatus'),
 
-            ]);
+
+
+             ]);
+
 
         return redirect('index');
 
@@ -180,15 +194,17 @@ class BackendController extends Controller
 
 
         $ambulance->save();
-
-
         session()->flash('message', 'ID# '. $id.' '. 'Successfully Updated');
-
-
-
         return redirect('index');
 
     }
+
+
+
+
+
+
+
 
 
 

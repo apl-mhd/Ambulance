@@ -36,5 +36,10 @@ Route::post('/addAmbulance', 'Backend\BackendController@addAmbulanceProcess')->n
 Route::get('/edit/{id}', 'Backend\BackendController@edit')->name('edit');
 Route::put('/update/{id}', 'Backend\BackendController@update')->name('update');
 
+    Route::get('/ambulancelist/{id}', 'Backend\BackendController@ambulancelist')->name('ambulancelist');
+
+
+
+
 
 });

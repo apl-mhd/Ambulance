@@ -27,4 +27,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+
+
+    public  function  usersList(){
+
+
+        view()->composer('partials.sidebar', function ($view){
+
+            $view->with('users',\App\Models\User::all());
+        });
+
+
+
+    }
+
 }

@@ -67,14 +67,26 @@
                             <span class="nav-main-link-name">Themed</span>
                         </a>
                     </li>
-                    <li class="nav-main-item">
-                        <a class="nav-main-link" href="be_blocks_api.html">
-                            <span class="nav-main-link-name">API</span>
-                        </a>
-                    </li>
+
                 </ul>
             </li>
 
+
+            <li class="nav-main-item">
+                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                    <i class="nav-main-link-icon si si-grid"></i>
+                    <span class="nav-main-link-name">User List</span>
+                </a>
+                <ul class="nav-main-submenu">
+                    @foreach($users as $user)
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{{route('ambulancelist',$user->id)}}">
+                                <span class="nav-main-link-name">{{$user->email}}</span>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </li>
 
 
         </ul>

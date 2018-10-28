@@ -30,7 +30,6 @@
 
             <thead>
             <tr>
-                <th>ID</th>
                 <th>Owner Name</th>
                 <th>Owner Mobile</th>
                 <th>Email</th>
@@ -43,16 +42,13 @@
                 <th>Number Plate</th>
                 <th>Location</th>
                 <th>Hospital</th>
-
                 <th>Action</th>
-
             </tr>
             </thead>
 
             <tbody>
             @foreach($ambulances as $ambulance)
                 <tr>
-                    <td>{{$ambulance->id}}</td>
                     <td>{{$ambulance->ownername}}</td>
                     <td>{{$ambulance->ownermobile}}</td>
                     <td>{{$ambulance->email}}</td>

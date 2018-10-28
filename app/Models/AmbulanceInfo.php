@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class AmbulanceInfo extends Model
 {
     protected $fillable = [
-        'user_id',
+        'user_id','imglink',
         'drivername','ownername','drivermobile', 'ownermobile', 'drivernid','ambulancename',
         'email',  'location','hospital','acstatus','numberplate','type',
     ];
