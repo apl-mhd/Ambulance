@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\User;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use  Auth;
@@ -13,11 +14,10 @@ class BackendController extends Controller
 {
 
 
+    /*After login page*/
     public  function index(){
         //$data['ambulances'] = AmbulanceInfo::all();
-
         $data = [];
-
        $userType =   Auth::user()->user_type;
        $userId  = Auth::user()->id;
 
@@ -31,9 +31,11 @@ class BackendController extends Controller
 
     }
 
+    /*Login page*/
+
     public  function  login(){
 
-        if (!Auth::check())
+        if (!Auth::check())            /*Check already logged in or not*/
           return view('login');
 
        return  redirect('index');
@@ -57,7 +59,7 @@ class BackendController extends Controller
         }
 
         else
-            redirect()->back();
+            redirect()->back();   /*If failed to login redirect back */
 
     }
 
@@ -73,17 +75,18 @@ class BackendController extends Controller
     }
 
 
-    /** Registration */
+    /*Registration  page*/
 
     public  function  registration(){
-
 
         return view('registration');
 
     }
 
-    public  function  registrationProcess(Request $request){
 
+    /*Insert user data into users table*/
+
+    public  function  registrationProcess(Request $request){
 
         User::create([
             'email' => strtolower( trim($request->input('email'))),
@@ -107,44 +110,39 @@ class BackendController extends Controller
         public  function  addAmbulanceProcess(Request $request){
 
 
-       // return $request;
-
             $userId  = Auth::user()->id;
-
             $photo = $request->file('photo');
 
             //dd($photo);
             $fileName = uniqid('photo_',true).str_random(10). '.'. $photo->getClientOriginalExtension();
+            
 
             $destinationPath = public_path('/uploads');
             $photo->move($destinationPath, $fileName);
+            $photo->storeAs('images',$fileName);
 
+            //$ambulance = new \App\Models\AmbulanceInfo();
 
-            //$photo->storeAs('images',$fileName);
+            AmbulanceInfo::create([
 
-            $ambulance = new \App\Models\AmbulanceInfo();
+             'user_id' => $userId,
+            'email' => strtolower($request->input('email')),
+            'drivername' =>  $request->input('driverName'),
+            'drivermobile' => $request->input('driverPhone'),
+            'ownername' => $request->input('ownerName'),
+            'drivernid' => $request->input('nid'),
+            'numberplate' => $request->input('numberplate'),
 
-            $ambulance->user_id = $userId;
-            $ambulance->email = strtolower($request->input('email'));
-            $ambulance->drivername =  $request->input('driverName');
-            $ambulance->drivermobile = $request->input('driverPhone');
-            $ambulance->ownername = $request->input('ownerName');
-            $ambulance->drivernid = $request->input('nid');
-            $ambulance->numberplate = $request->input('numberplate');
+            'ownermobile' => $request->input('ownerPhone'),
+            'ambulancename' => $request->input('ambulanceName'),
+            'hospital' => $request->input('hospitalName'),
+            'location' => $request->input('locationName'),
+            'type' => $request->input('type'),
+            'acstatus' => $request->input('acstatus'),
 
-            $ambulance->ownermobile = $request->input('ownerPhone');
-            $ambulance->ambulancename = $request->input('ambulanceName');
-            $ambulance->hospital = $request->input('hospitalName');
-            $ambulance->location = $request->input('locationName');
-            $ambulance->type = $request->input('type');
-            $ambulance->acstatus = $request->input('acstatus');
+            'imglink' => $fileName,
 
-            $ambulance->imglink = $fileName;
-
-
-            $ambulance->save();
-
-
+            ]);
 
         return redirect('index');
 
