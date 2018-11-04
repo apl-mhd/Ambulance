@@ -34,8 +34,10 @@ class BackendController extends Controller
 
     public  function ambulancelist($id){
 
-
-        return $id;
+        $data = [];
+        $data['ambulances'] = AmbulanceInfo::where('user_id', '=', $id)->get();
+        return view('index', $data);
+        return view('userambulancelist', $data);
 
     }
 
@@ -198,15 +200,6 @@ class BackendController extends Controller
         return redirect('index');
 
     }
-
-
-
-
-
-
-
-
-
 
 
     public  function  showAddForm(){

@@ -47,8 +47,6 @@
 
         @yield('logReg')
 
-
-
     </main>
     <!-- END Main Container -->
 </div>
@@ -74,7 +72,6 @@
 
 <!--
     Dashmix JS
-
     Custom functionality including Blocks/Layout API as well as other vital and optional helpers
     webpack is putting everything together at assets/_es6/main/app.js
 -->
@@ -85,5 +82,7 @@
 
 <!-- Page JS Code -->
 <script src="assets/js/pages/op_auth_signin.min.js"></script>
+
+
 </body>
 </html>

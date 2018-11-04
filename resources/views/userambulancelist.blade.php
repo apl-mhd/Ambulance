@@ -13,13 +13,13 @@
 
 
 
-            @if(!empty(session('message')))
+        @if(!empty(session('message')))
             <div class="alert alert-success">
 
                 {{session('message')}}
             </div>
 
-            @endif
+        @endif
 
 
         <p>
@@ -70,7 +70,7 @@
             </tbody>
         </table>
 
-       {{-- {{$ambulances->links()}}--}}
+        {{-- {{$ambulances->links()}}--}}
 
     </div>
 
@@ -86,7 +86,7 @@
         } );
 
     </script>
-    @stop
+@stop
 
 
 
