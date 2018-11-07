@@ -10,23 +10,17 @@
 
 
     <div class="container-fluid">
-
-
-
             @if(!empty(session('message')))
             <div class="alert alert-success">
-
                 {{session('message')}}
             </div>
-
             @endif
 
-
         <p>
-            <a class="btn btn-info" href="{{route('addAmbulance')}}">Add Ambulance</a>
+            <a style="margin-top: 10px" class="btn btn-info" href="{{route('addAmbulance')}}">Add Ambulance</a>
         </p>
 
-        <table class="table table-bordered table-condensed">
+        <table id="table" class=" table-bordered table-condensed">
 
             <thead>
             <tr>
@@ -35,7 +29,7 @@
                 <th>Email</th>
                 <th>Driver Name</th>
                 <th>Driver Mobile</th>
-                <th>Driver NID</th>
+                {{--<th>Driver NID</th>--}}
                 <th>Ambulance</th>
                 <th>Type</th>
                 <th>AC </th>
@@ -54,7 +48,7 @@
                     <td>{{$ambulance->email}}</td>
                     <td>{{$ambulance->drivername}}</td>
                     <td>{{$ambulance->drivermobile}}</td>
-                    <td>{{$ambulance->drivernid}}</td>
+                    {{--<td>{{$ambulance->drivernid}}</td>--}}
                     <td>{{$ambulance->ambulancename}}</td>
                     <td>{{$ambulance->type}}</td>
                     <td>{{($ambulance->acstatus) ==1 ?"AC" :"Non AC"}}</td>
@@ -90,7 +84,18 @@
     <script>
 
         $(document).ready( function () {
-            $('.table').DataTable();
+            $('#table').DataTable();
+        } );
+
+
+        var table = $('#table').DataTable();
+
+
+        $('#table tbody').on( 'click', 'img.icon-delete', function () {
+            table
+                .row( $(this).parents('tr') )
+                .remove()
+                .draw();
         } );
 
     </script>
