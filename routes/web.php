@@ -34,7 +34,8 @@ Route::get('/addAmbulance', 'Backend\BackendController@addAmbulance')->name('add
 Route::post('/addAmbulance', 'Backend\BackendController@addAmbulanceProcess')->name('addAmbulanceProcess');
 
 Route::get('/edit/{id}', 'Backend\BackendController@edit')->name('edit');
-Route::put('/update/{id}', 'Backend\BackendController@update')->name('update');
+Route::put('/update/{id}', 'Backend\BackendController@update')->name('update');/**/
+Route::delete('/deleteAmbulanceInfo/{id}', 'Backend\BackendController@deleteAmbulanceInfo')->name('deleteAmbulanceInfo');/**/
 
     Route::get('/ambulancelist/{id}', 'Backend\BackendController@ambulancelist')->name('ambulancelist');
 

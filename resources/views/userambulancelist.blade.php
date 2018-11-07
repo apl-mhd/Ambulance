@@ -21,7 +21,6 @@
 
         @endif
 
-
         <p>
             <a class="btn btn-info" href="{{route('addAmbulance')}}">Add Ambulance</a>
         </p>
@@ -62,15 +61,12 @@
                     <td>{{$ambulance->location}}</td>
                     <td>{{$ambulance->hospital}}</td>
                     <td>
-                        <a class="btn btn-info" href="{{route('edit',1)}}">Update</a>
+                        <a class="btn btn-info" href="{{route('edit',$ambulance->id)}}">Update</a>
                     </td>
-
                 </tr>
             @endforeach
             </tbody>
         </table>
-
-        {{-- {{$ambulances->links()}}--}}
 
     </div>
 

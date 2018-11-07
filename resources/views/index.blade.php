@@ -62,7 +62,15 @@
                     <td>{{$ambulance->location}}</td>
                     <td>{{$ambulance->hospital}}</td>
                     <td>
-                        <a class="btn btn-info" href="{{route('edit',1)}}">Update</a>
+                        <a class="btn btn-info" href="{{route('edit',$ambulance->id)}}">Update</a>
+
+                        <form action="{{route('deleteAmbulanceInfo',$ambulance->id)}}" method="post">
+                            @csrf
+                            @method('DELETE')
+
+                            <button style="color: #ffffff" class="btn btn-danger btn-block" type="submit">Delete</button>
+                        </form>
+
                     </td>
 
                 </tr>

@@ -36,7 +36,8 @@ class BackendController extends Controller
 
         $data = [];
         $data['ambulances'] = AmbulanceInfo::where('user_id', '=', $id)->get();
-        return view('index', $data);
+
+        //return view('index', $data);
         return view('userambulancelist', $data);
 
     }
@@ -121,14 +122,8 @@ class BackendController extends Controller
 
         public  function  addAmbulanceProcess(Request $request){
 
-
-       // return $request;
-
             $userId  = Auth::user()->id;
-
             $photo = $request->file('photo');
-
-            //dd($photo);
             $fileName = uniqid('photo_',true).str_random(10). '.'. $photo->getClientOriginalExtension();
 
             $destinationPath = public_path('/uploads');
@@ -198,6 +193,18 @@ class BackendController extends Controller
         $ambulance->save();
         session()->flash('message', 'ID# '. $id.' '. 'Successfully Updated');
         return redirect('index');
+
+    }
+
+    public  function  deleteAmbulanceInfo($id){
+
+
+        $ambulance = AmbulanceInfo::find($id);
+
+        $ambulance->delete();
+        session()->flash('message',   ' Successfully  Deleted');
+        return redirect()->back();
+
 
     }
 

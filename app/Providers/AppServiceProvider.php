@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Providers;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 use \Illuminate\Support\Facades\View;
 
 
@@ -20,7 +22,18 @@ class AppServiceProvider extends ServiceProvider
         View::composer('partials.sidebar',function($view){
 
 
-            $view->with('users', \App\User::all());
+             $utype = Auth::user()->user_type;
+            $id = Auth::user()->id;
+
+             if($utype ==1)
+
+
+                 $view->with('users', \App\User::all());
+             else {
+              //   dd(\App\User::where('user_id', $id));
+                  $view->with('users', \App\User::where('user_id', $id));
+
+             }
         });
 
 
