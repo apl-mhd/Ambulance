@@ -8,7 +8,7 @@
             <div class="p-3 w-100">
                 <!-- Header -->
                 <div class="mb-3 text-center">
-                    <a class="link-fx font-w700 font-size-h1" href="index.html">
+                    <a class="link-fx font-w700 font-size-h1" href="{{route('index')}}">
                         <span class="text-dark">LLC</span><span class="text-primary">Ambulance</span>
                     </a>
                     <p class="text-uppercase font-w700 font-size-sm text-muted">Sign In</p>
@@ -19,8 +19,6 @@
                 <!-- jQuery Validation (.js-validation-signin class is initialized in js/pages/op_auth_signin.js) -->
                 <!-- For more info and examples you can check out https://github.com/jzaefferer/jquery-validation -->
                 <div class="row no-gutters justify-content-center">
-
-
 
                     <div class="col-sm-8 col-xl-6">
 

@@ -6,6 +6,12 @@ use App\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
+use DataTables;
+use aaa;
+
+
+
 use  Auth;
 
 
@@ -17,7 +23,7 @@ class BackendController extends Controller
     /*After login page*/
     public  function index(){
         //$data['ambulances'] = AmbulanceInfo::all();
-        $data = [];
+       /* $data = [];
        $userType =   Auth::user()->user_type;
        $userId  = Auth::user()->id;
 
@@ -27,7 +33,42 @@ class BackendController extends Controller
        }
 
         $data['ambulances'] = AmbulanceInfo::where('user_id', '=', $userId)->get();
-        return view('index', $data);
+        return view('index', $data);*/
+       return view('index');
+
+    }
+
+
+    public  function  ambulancelist1(){
+
+        //$data['ambulances'] = AmbulanceInfo::all();
+         $data = [];
+       /* $userType =   Auth::user()->user_type;
+        $userId  = Auth::user()->id;
+
+
+        if ($userType == 1) {
+            $data['ambulances'] = AmbulanceInfo::all();
+            return view('ambulanceList', $data);
+        }*/
+        return view('ambulanceList');
+
+
+      //  ambulanceList
+
+        /* $data['ambulances'] = AmbulanceInfo::where('user_id', '=', $userId)->get();
+         return view('index2', $data);*/
+
+    }
+
+    public  function  ajax(){
+
+        $model = AmbulanceInfo::query();
+        return \DataTables::of($model)->make(true);
+
+//        return DataTables::of($model)->toJson();
+
+
 
     }
 
@@ -62,13 +103,14 @@ class BackendController extends Controller
             'password'  => 'required',
         ]);
 */
-
         $credentials = $request->only('email', 'password');
-
         if (Auth::attempt($credentials)) {
             // Authentication passed...
 
-            return redirect()->intended('index');
+            if (Auth::user()->user_type == 2)
+                return redirect()->intended('index');
+            else
+                return  ;
         }
 
         else
@@ -198,9 +240,7 @@ class BackendController extends Controller
 
     public  function  deleteAmbulanceInfo($id){
 
-
         $ambulance = AmbulanceInfo::find($id);
-
         $ambulance->delete();
         session()->flash('message',   ' Successfully  Deleted');
         return redirect()->back();
@@ -210,14 +250,10 @@ class BackendController extends Controller
 
 
     public  function  showAddForm(){
-
-
         return view('addAmbulance');
     }
 
     public  function  showAll(){
-
-
         return view('addAmbulance');
     }
 

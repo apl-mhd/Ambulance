@@ -2,6 +2,12 @@
 
 return [
 
+
+    'providers' => [
+        // ...
+        Yajra\DataTables\DataTablesServiceProvider::class,
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
