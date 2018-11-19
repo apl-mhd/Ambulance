@@ -48,7 +48,7 @@
                 </a>
                 <ul class="nav-main-submenu">
                     <li class="nav-main-item">
-                        <a class="nav-main-link" href="{{route('home')}}">
+                        <a class="nav-main-link" href="{{route('ambulancelist')}}">
                             <span class="nav-main-link-name">Ambulance List</span>
                         </a>
                     </li>
@@ -74,26 +74,10 @@
 
             @if(Auth::user()->user_type ==1)
             <li class="nav-main-item">
-                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
-                    <i class="nav-main-link-icon si si-grid"></i>
-                    <span class="nav-main-link-name">User List</span>
+
+                <a class="fa-user nav-main-link nav-main-link-submenu"  aria-expanded="false" href="{{route('userslist')}}">
+                    Users List
                 </a>
-
-
-                <ul class="nav-main-submenu">
-
-
-
-                        @foreach($users as $user)
-                            <li class="nav-main-item">
-                                <a class="nav-main-link" href="{{route('ambulancelist',$user->id)}}">
-                                    <span class="nav-main-link-name">{{$user->email}}</span>
-                                </a>
-                            </li>
-                        @endforeach
-
-
-                </ul>
             </li>
 
             @endif

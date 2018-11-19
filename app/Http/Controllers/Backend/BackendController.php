@@ -38,6 +38,7 @@ class BackendController extends Controller
 
     }
 
+    //show all ambulance list for admin
 
     public  function  ambulancelist1(){
 
@@ -64,11 +65,23 @@ class BackendController extends Controller
     public  function  ajax(){
 
         $model = AmbulanceInfo::query();
-        return \DataTables::of($model)->make(true);
+        return DataTables::of($model)->make(true);
 
 //        return DataTables::of($model)->toJson();
 
+    }
 
+    //Users List
+
+    public  function  usesrsList(){
+
+        return view('userlist');
+
+    }
+
+    public  function  usersListAjax(){
+        $model = User::where('user_type', '=', '0');
+        return DataTables::of($model)->make(true);
 
     }
 
@@ -107,10 +120,10 @@ class BackendController extends Controller
         if (Auth::attempt($credentials)) {
             // Authentication passed...
 
-            if (Auth::user()->user_type == 2)
+            if (Auth::user()->user_type == 0)
                 return redirect()->intended('index');
             else
-                return  ;
+                return  redirect()->intended('ambulanceList');
         }
 
         else

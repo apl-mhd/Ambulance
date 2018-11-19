@@ -33,7 +33,6 @@ class User extends Authenticatable
 
     public  function  usersList(){
 
-
         view()->composer('partials.sidebar', function ($view){
 
             $view->with('users',\App\Models\User::all());

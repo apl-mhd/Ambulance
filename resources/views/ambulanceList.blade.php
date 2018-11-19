@@ -31,12 +31,14 @@
                 <th>Driver Mobile</th>
                 {{--<th>Driver NID</th>--}}
                 <th>Ambulance</th>
-                {{--<th>Type</th>--}}
+                <th>Edit</th>
+                <th>View</th>
+
                 {{--<th>AC </th>
                 <th>Number Plate</th>
                 <th>Location</th>
                 <th>Hospital</th>
-                <th>Action</th>--}}
+                <th>Action</th>
             </tr>
             </thead>
 
@@ -95,12 +97,17 @@
                     {data: 'drivername', name: 'drivername'},
                     {data: 'ownermobile', name: 'ownermobile'},
                     {data: 'ambulancename', name: 'ambulancename'},
+                    {data: 'id',
+
+                        fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+                            $(nTd).html("<a href='/edit/"+oData.id+"'>"+"Edit"+"</a>");
+                        }
+
+                    },
 
                 ]
             });
         } );
-
-
 
 
     </script>

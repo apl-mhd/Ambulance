@@ -29,6 +29,8 @@ Route::post('/registration', 'Backend\BackendController@registrationProcess')->n
 Route::group(['middleware' =>'auth'], function (){
 Route::get('/ambulanceList', 'Backend\BackendController@ambulancelist1')->name('ambulancelist');
 Route::get('/ajax', 'Backend\BackendController@ajax')->name('datatables.data');
+Route::get('/userslist', 'Backend\BackendController@usesrsList')->name('userslist');
+Route::get('/userslistajax', 'Backend\BackendController@usersListAjax')->name('userslistajax');
 
 
 

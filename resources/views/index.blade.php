@@ -47,16 +47,24 @@
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
                 </li>
 
 
                 @if(Auth::user())
                     <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="{{route('logout')}}">Logout</a>
-                        {{Auth::user()->user_type}}
-                        {{Auth::user()->email}}
+                      {{--  {{Auth::user()->user_type}}
+                        {{Auth::user()->email}}--}}
                     </li>
                 @else
 
@@ -76,7 +84,7 @@
         <div class="row">
             <div class="col-lg-10 mx-auto">
                 <h1 class="text-uppercase">
-                    <strong>Your Favorite Source of Free Bootstrap Themes</strong>
+                    <strong>Find Ambulance</strong>
                 </h1>
                 <hr>
             </div>
@@ -273,16 +281,16 @@
 </section>
 
 <!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
 <!-- Plugin JavaScript -->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-<script src="vendor/scrollreveal/scrollreveal.min.js"></script>
-<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+<script src="{{asset('vendor/scrollreveal/scrollreveal.min.js')}}"></script>
+<script src="{{asset('vendor/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
 
 <!-- Custom scripts for this template -->
-<script src="js/creative.min.js"></script>
+<script src="asset('js/creative.min.js') "></script>
 
 </body>
 
