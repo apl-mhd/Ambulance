@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\User;
+use  App\sendrequest;
+
+
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -140,6 +143,38 @@ class BackendController extends Controller
 
 
         return view('login');
+    }
+
+
+    //Request for ambulance
+
+    /**
+     * @param Request $request
+     * @return Request
+     */
+    public  function  requestProcess(Request $request)
+    {
+
+        sendrequest::create([
+            'from' => $request->input('from'),
+            'to' => $request->input('to'),
+            'requestdate'=>$request->input('date'),
+        ]);
+
+        return $request;
+
+        }
+
+
+      public  function  sendRequest(){
+
+        return view('sendreqlist');
+      }
+
+    public  function  sendRequestAjax(){
+
+        $model = sendrequest::query();
+        return DataTables::of($model)->make(true);
     }
 
 

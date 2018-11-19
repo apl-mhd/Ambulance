@@ -25,6 +25,7 @@
     <!-- Custom styles for this template -->
     <link href="https://blackrockdigital.github.io/startbootstrap-creative/css/creative.min.css" rel="stylesheet">
 
+
 </head>
 
 <body id="page-top">
@@ -90,11 +91,75 @@
             </div>
             <div class="col-lg-8 mx-auto">
                 <p class="text-faded mb-5">Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
-                <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+
+                <button type="button" class="btn btn-xl btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Send Request</button>
             </div>
         </div>
     </div>
 </header>
+
+
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Send Request For Ambulance</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form  action="{{route('sendrequest')}}" method="post" role="method">
+            <div class="modal-body">
+
+
+                    @csrf()
+
+                    <div class="form-group">
+                        <label for="to" class="col-form-label">From</label>
+                        <input type="text" name="from" class="form-control" id="from">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">To</label>
+                        <input type="text" name="to" class="form-control" id="to">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Emergency Phone Number</label>
+                        <input type="number" name="number" class="form-control" id="number">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Pick A Date</label>
+                        <input type="date" name="date" class="form-control"  id="datepicker">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Message:</label>
+                        <textarea class="form-control"  id="message-text"></textarea>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Send Request</button>
+            </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
 
 <section class="bg-primary" id="about">
     <div class="container">
@@ -288,9 +353,18 @@
 <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 <script src="{{asset('vendor/scrollreveal/scrollreveal.min.js')}}"></script>
 <script src="{{asset('vendor/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <!-- Custom scripts for this template -->
 <script src="asset('js/creative.min.js') "></script>
+
+
+<script>
+
+
+
+
+</script>
 
 </body>
 

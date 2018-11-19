@@ -32,6 +32,12 @@ Route::get('/ajax', 'Backend\BackendController@ajax')->name('datatables.data');
 Route::get('/userslist', 'Backend\BackendController@usesrsList')->name('userslist');
 Route::get('/userslistajax', 'Backend\BackendController@usersListAjax')->name('userslistajax');
 
+Route::post('/sendrequest', 'Backend\BackendController@requestProcess');
+Route::get('/sendrequest', 'Backend\BackendController@sendRequest')->name('sendrequest');
+Route::get('/sendrequestajax', 'Backend\BackendController@sendrequestAjax')->name('sendrequestajax');
+
+
+
 
 
 

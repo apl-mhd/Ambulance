@@ -74,11 +74,16 @@
 
             @if(Auth::user()->user_type ==1)
             <li class="nav-main-item">
-
                 <a class="fa-user nav-main-link nav-main-link-submenu"  aria-expanded="false" href="{{route('userslist')}}">
                     Users List
                 </a>
             </li>
+
+                <li class="nav-main-item">
+                    <a class="fa-user nav-main-link nav-main-link-submenu"  aria-expanded="false" href="{{route('userslist')}}">
+                        Pending Request
+                    </a>
+                </li>
 
             @endif
 
