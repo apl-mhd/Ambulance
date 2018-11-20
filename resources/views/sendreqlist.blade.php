@@ -27,6 +27,7 @@
                 <th>Id</th>
                 <th>From</th>
                 <th>To</th>
+                <th>Date</th>
                 <th>Action</th>
         </table>
 
@@ -48,12 +49,13 @@
                 columns:[
                     {data: 'id', name: 'id'},
                     {data: 'from', name: 'from'},
-                    {data: 'to', name: 'from'},
+                    {data: 'to', name: 'to'},
+                    {data: 'requestdate', name: 'requestdate'},
+
 
                     {data: 'id',
-
                         fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
-                            $(nTd).html("<a href='/edit/"+oData.id+"'>"+"Edit"+"</a>");
+                            $(nTd).html("<a href='/approve/"+oData.id+"'>"+"<button class='btn btn-success'>Approve</button>"+"</a>");
                         }
 
                     },

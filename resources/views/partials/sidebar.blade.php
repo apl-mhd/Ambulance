@@ -80,7 +80,7 @@
             </li>
 
                 <li class="nav-main-item">
-                    <a class="fa-user nav-main-link nav-main-link-submenu"  aria-expanded="false" href="{{route('userslist')}}">
+                    <a class="fa-user nav-main-link nav-main-link-submenu"  aria-expanded="false" href="{{route('sendrequest')}}">
                         Pending Request
                     </a>
                 </li>

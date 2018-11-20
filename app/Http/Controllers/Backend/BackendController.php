@@ -181,7 +181,6 @@ class BackendController extends Controller
     /*Registration  page*/
 
     public  function  registration(){
-
         return view('registration');
 
     }
