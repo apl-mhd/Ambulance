@@ -41,7 +41,7 @@
     </div>
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal"aa data-target="#exampleModalCenter">
+    <button type="button" id="mod" class="btn  btn-primary" data-toggle="modal"aa data-target="#exampleModalCenter">
         Launch demo modal
     </button>
 
@@ -57,31 +57,20 @@
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-4">.col-md-4</div>
-                            <div class="col-md-4 ml-auto">.col-md-4 .ml-auto</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3 ml-auto">.col-md-3 .ml-auto</div>
-                            <div class="col-md-2 ml-auto">.col-md-2 .ml-auto</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 ml-auto">.col-md-6 .ml-auto</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-9">
-                                Level 1: .col-sm-9
-                                <div class="row">
-                                    <div class="col-8 col-sm-6">
-                                        Level 2: .col-8 .col-sm-6
-                                    </div>
-                                    <div class="col-4 col-sm-6">
-                                        Level 2: .col-4 .col-sm-6
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <table id="table2" class=" table-bordered table-condensed">
+
+                            <thead>
+                            <tr>
+                                <th>Owner Name</th>
+                                <th>Owner Mobile</th>
+                                <th>Email</th>
+                                <th>Driver Name</th>
+                                <th>Driver Mobile</th>
+                                {{--<th>Driver NID</th>--}}
+                                <th>Ambulance</th>
+                                <th>Edit</th>
+                                <th>View</th>
+                        </table>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -121,14 +110,54 @@
 
                     {data: 'id',
                         fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
-                            $(nTd).html("<a href='/viewambulacne/"+oData.id+"'>"+"View"+"</a>");
+                            $(nTd).html("<a  href='/viewambulacne/"+oData.id+"'>"+"View"+"</a>");
                         }
 
                     },
 
                 ]
             });
+
+
+            $('#table2').DataTable({
+                proccessing:true,
+                serverSide: true,
+                ajax: '{!! route('datatables.data')!!}',
+                columns:[
+                    {data: 'ownername', name: 'ownername'},
+                    {data: 'ownermobile', name: 'ownermobile'},
+                    {data: 'email', name: 'email'},
+                    {data: 'drivername', name: 'drivername'},
+                    {data: 'ownermobile', name: 'ownermobile'},
+                    {data: 'ambulancename', name: 'ambulancename'},
+                    {data: 'id',
+
+                        fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+                            $(nTd).html("<a href='/edit/"+oData.id+"'>"+"Edit"+"</a>");
+                        }
+                    },
+
+                    {data: 'id',
+                        fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+                            $(nTd).html("<a  href='/viewambulacne/"+oData.id+"'>"+"View"+"</a>");
+                        }
+
+                    },
+
+                ]
+            });
+
+
+            $('#mod').click(function () {
+
+                $('#exampleModalCenter').modal('toggle');
+
+            })
+
+
+
         } );
+
 
 
     </script>
